@@ -1,67 +1,57 @@
-# ⚽ Campo Aberto: Predição de Futebol Open Source
+# OpenField ⚽ | Autonomous Sports Predictive Engine
 
-**Campo Aberto** é uma API de alto desempenho desenvolvida em **.NET 9** voltada para a análise estatística e previsão de resultados do futebol brasileiro. O projeto combina dados técnicos (estatísticas de jogo) com o "calor" das notícias extra-campo (crises, desfalques e momento do time).
+> **Status:** 🚧 In Development (Architecture Phase)
+> **Tech Stack:** .NET 10 (LTS) | C# 14
 
-> **Status:** 🚧 Em Desenvolvimento (Fase de Modelagem)
+## 🎯 Vision
 
----
+OpenField is not just a prediction tool; it is a **High-Performance Autonomous Engine** designed to process complex sports data. Unlike traditional betting scripts, OpenField utilizes **Clean Architecture** and **Domain-Driven Design (DDD)** to create a platform agnostic to specific championships (Multi-League Support).
 
-## 🎯 Objetivo do Projeto
+The system is designed to "self-feed" via resilient background workers, process data using statistical models (Poisson Distribution + Machine Learning), and deliver real-time probabilities with high reliability.
 
-O mercado de dados esportivos é vasto, mas poucas ferramentas abertas conseguem cruzar **estatísticas frias** com **variáveis subjetivas**. O Campo Aberto nasce para preencher essa lacuna, inicialmente focado no **Campeonato Brasileiro**, transformando dados brutos em inteligência preditiva.
+## 🏗 Architecture & Tech Stack
 
-### 🚀 Diferenciais Técnicos
+The project is built on the latest **.NET 10** ecosystem, leveraging **C# 14** features for maximum performance and expressiveness.
 
-- **Arquitetura Limpa (Clean Architecture):** Organização profissional para garantir escalabilidade e testabilidade.
-- **Engenharia de Dados:** Integração com APIs externas e processamento de notícias via Web Scraping.
-- **Resiliência e Performance:** Uso estratégico de **Redis** para cache e **Polly** para tolerância a falhas.
+- **Core:** Pure C# 14 Logic. Implements rich Domain Models and Strategy Patterns.
+- **Application:** CQRS orchestration.
+- **Infrastructure:**
+  - **Data:** EF Core 10 & Dapper. optimized for high-throughput writes and low-latency reads.
+  - **Integrations:** Resilient scraping with Polly.
+- **Presentation:**
+  - **Web API:** .NET 10 Minimal APIs / Controllers.
+  - **Worker Service:** Native AOT-ready background agents.
 
----
+## 🚀 Key Features (Roadmap)
 
-## 🛠️ Tech Stack
+- [ ] **Multi-League Engine:** Configurable RuleSets.
+- [ ] **Resilient ETL:** Fault-tolerant ingestion pipelines.
+- [ ] **Predictive Core:** Poisson Distribution & ML.NET integration.
+- [ ] **Event Sourcing (Planned):** Temporal data tracking.
 
-| Tecnologia                | Finalidade                                           |
-| :------------------------ | :--------------------------------------------------- |
-| **.NET 10**               | Framework principal (C#)                             |
-| **PostgreSQL**            | Banco de dados relacional (Histórico e Tabelas)      |
-| **Redis**                 | Cache de alta performance e redução de latência      |
-| **Docker**                | Containerização do ambiente (DevOps)                 |
-| **Entity Framework Core** | ORM para persistência de dados                       |
-| **Polly**                 | Implementação de Resiliência (Retry/Circuit Breaker) |
+## 🤝 How to contribute
 
----
+This is an **Open Source** project. If you love football, statistics, or want to practice the latest features of the .NET ecosystem, you are welcome to:
 
-## 📈 Roadmap
+1. Open **Issues** with suggestions for new model variables.
+2. Contribute code via **Pull Requests**.
+3. Improve the technical documentation.
 
-- [ ] **Fase 1: Estrutura Base**
-  - [ ] Configuração do ambiente Docker (Postgres/Redis).
-  - [ ] Modelagem das entidades principais (Time, Jogo, Campeonato).
-  - [ ] Implementação do serviço de consumo da API-Football.
-- [ ] **Fase 2: Inteligência Extra-Campo**
-  - [ ] Desenvolvimento de Worker Services para Web Scraping de portais (GE, UOL).
-  - [ ] Implementação de lógica de pesos para notícias (sentimento e impacto).
-- [ ] **Fase 3: O "Oráculo" (Cálculo)**
-  - [ ] Motor de predição baseado em Distribuição de Poisson.
-  - [ ] API Endpoints para consulta de rodadas e probabilidades.
+## 📄 License
 
----
+This project is licensed under the **GNU General Public License v3.0 (GPLv3)**. See the [`LICENSE`](LICENSE) file for more details.
 
-## 🤝 Como contribuir
+By adopting this license, we ensure that **OpenField** and any improvements made by third parties remain open and free for the community.
 
-Este é um projeto **Open Source**. Se você gosta de futebol, estatística ou quer praticar as novidades do ecossistema .NET, sinta-se convidado para:
+## 🛠 How to Run
 
-1. Abrir **Issues** com sugestões de novas variáveis para o modelo.
-2. Contribuir com código via **Pull Requests**.
-3. Melhorar a documentação técnica.
+_Requires .NET 10 SDK and SQL Server/Docker._
+
+1. Clone the repo.
+2. Update connection strings in `appsettings.json`.
+3. Run `dotnet ef database update`.
+4. Launch the Worker Service.
 
 ---
 
-## 📄 Licença
-
-Este projeto está licenciado sob a Licença **GNU General Public License v3.0 (GPLv3)**. Veja o arquivo [`LICENSE`](LICENSE) para mais detalhes.
-
-Ao adotar esta licença, garantimos que o Campo Aberto e qualquer melhoria feita por terceiros permaneçam sempre abertos e gratuitos para a comunidade.
-
----
-
-_Desenvolvido com ❤️ por **Bruno Gabriel Knop**._
+_Developed with ❤️ by **Bruno Gabriel Knop**._
